@@ -10,7 +10,7 @@ class ModelRepository():
             model = None
         return model
 
-    def getAll(self):
+    def get_all(self):
         return [model for model in NNModel.select()]
 
     def save(self, model):

@@ -20,14 +20,14 @@ class test_repository(TestCase):
         model = model_repository.get_next()
         self.assertEqual(model, None)
 
-        models = model_repository.getAll()
+        models = model_repository.get_all()
         self.assertEqual(len(models), 0)
 
         model = NNModel.create_inst(name='test', datemodified=datetime.datetime.now(),
                                     datecreated=datetime.datetime.now(), epoch=1, active=False)
         model_repository.save(model)
 
-        models = model_repository.getAll()
+        models = model_repository.get_all()
         self.assertEqual(len(models), 1)
 
         model = model_repository.get_by_name('test')
@@ -48,7 +48,7 @@ class test_repository(TestCase):
 
         model_repository.save(model3)
 
-        models = model_repository.getAll()
+        models = model_repository.get_all()
         self.assertEqual(len(models), 3)
 
         model.active = True
@@ -58,3 +58,5 @@ class test_repository(TestCase):
         model = model_repository.get_next()
         self.assertEqual(model.active, True)
         self.assertEqual(model.name, 'test2')
+
+

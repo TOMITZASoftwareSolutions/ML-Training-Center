@@ -3,7 +3,7 @@ from repository.basemodel import BaseModel
 
 
 class NNModel(BaseModel):
-    name = CharField(primary_key=True)
+    name = CharField(primary_key=True, max_length=256)
     datemodified = DateTimeField(null=False)
     datecreated = DateTimeField(null=False)
     epoch = IntegerField()
