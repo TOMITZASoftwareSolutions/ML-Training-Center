@@ -136,4 +136,7 @@ crashlytics-build.properties
 fabric.properties
 
 /saved_models
+/logs
+/tests/test_data
+/tests/test_models
 

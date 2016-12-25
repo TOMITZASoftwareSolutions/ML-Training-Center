@@ -30,7 +30,9 @@ class TrainingScheduler:
             model.datemodified = datetime.now()
             self.model_repository.save(model)
 
-        # TODO if current removed model is already running then stop training
+            running_model = self.training_manager.get_current()
+            if running_model and running_model.name == model_name:
+                self.training_manager.stop_training()
 
         self.run()
 
@@ -56,8 +58,8 @@ class TrainingScheduler:
         self.model_repository.save(model)
         print 'Train update for model: {0}; Finished epochs:{1}'.format(model.name, model.epoch)
 
-    def train_error(self):
-        print "Train error"
+    def train_error(self, e):
+        print "Train error" + e.message
         self.run()
 
     def train_completed(self):

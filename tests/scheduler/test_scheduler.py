@@ -2,6 +2,7 @@ from unittest import TestCase
 from mockito import *
 import time
 
+from managers.config_manager import ConfigManager
 from managers.training_manager import TrainingManager
 from managers.training_scheduler import TrainingScheduler
 from model.nnmodel import NNModel
@@ -16,7 +17,8 @@ class TestScheduler(TestCase):
 
     def test_scheduler(self):
         model_repository = ModelRepository()
-        training_manager = TrainingManager()
+        config_manager = ConfigManager()
+        training_manager = TrainingManager(config_manager)
         training_scheduler = TrainingScheduler(model_repository, training_manager)
 
         training_scheduler.add('test1')

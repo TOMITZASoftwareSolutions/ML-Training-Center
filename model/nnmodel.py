@@ -9,6 +9,7 @@ class NNModel(BaseModel):
     epoch = IntegerField()
     active = BooleanField()
 
+
     @staticmethod
     def create_inst(name, datecreated, datemodified, epoch, active):
         return NNModel(name=name, datecreated=datecreated, datemodified=datemodified, epoch=epoch, active=active)
